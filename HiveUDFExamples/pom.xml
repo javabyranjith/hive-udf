@@ -4,7 +4,7 @@
 
 	<groupId>Hive</groupId>
 	<artifactId>HiveUDFExamples</artifactId>
-	<version>0.1</version>
+	<version>0.2</version>
 	<packaging>jar</packaging>
 
 	<name>HiveUDFExamples</name>
@@ -16,6 +16,9 @@
 		<hadoop-client>2.5.0</hadoop-client>
 		<hive-exec>1.1.1</hive-exec>
 		<slf4jVersion>1.7.10</slf4jVersion>
+		<aws.version>1.10.40</aws.version>
+		<http.core.version>4.3.3</http.core.version>
+		<http.client.version>4.3.6</http.client.version>
 	</properties>
 
 	<dependencies>
@@ -42,5 +45,25 @@
 			<version>${junit-version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Amazon AWS APIs -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk</artifactId>
+			<version>${aws.version}</version>
+		</dependency>
+
+		<!-- Apache HTTP APIs -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>${http.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${http.client.version}</version>
+		</dependency>
+
 	</dependencies>
 </project>

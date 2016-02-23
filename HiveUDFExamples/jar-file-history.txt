@@ -1,0 +1,13 @@
+HiveUDFExamples-0.2.jar
+======================
+Implemented below examples:
+1. ReadAwsS3FileContent.java
+
+HiveUDFExamples-0.1.jar
+======================
+Implemented below examples:
+1. EmpExperienceUDFString.java
+2. EmpExperienceUDFMap.java
+3. EmpExperienceUDFList.java
+4. EmpBonusUDFList.java
+5. EmpBonusUDF.java

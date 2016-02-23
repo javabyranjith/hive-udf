@@ -52,3 +52,14 @@ ADD JAR /prod/hadoop/user/<username>/ranjith/emp/HiveUDFExamples-0.1.jar;
 CREATE TEMPORARY FUNCTION emp_bonus AS 'jbr.hiveudf.EmpBonusUDF';
 --SELECT emp_bonus('100','/user/<username>/mytest/emp/empbonus/'); -- by hdfs location
 SELECT emp_bonus('700','/user/<username>/mytest/emp/empbonus/empbonus2.txt'); -- by hdfs file
+
+-- Read File Content from Amazon S3.
+ADD JAR s3://ranjith/HiveUDFExamples-0.2.jar;
+CREATE TEMPORARY FUNCTION ReadAwsS3FileContent AS 'jbr.hiveudf.ReadAwsS3FileContent';
+SELECT ReadAwsS3FileContent('<aws access key>','<aws security key>', 'ranjith', 'ranjith/myhive/hive-data.txt') FROM mydb.mytable;
+
+-- Read File Content from Amazon S3.
+ADD JAR /prod/hadoop/user/<username>/ranjith/emp/HiveUDFExamples-0.2.jar;
+CREATE TEMPORARY FUNCTION ReadHDFSFileContent AS 'jbr.hiveudf.ReadHDFSFileContent';
+SELECT ReadHDFSFileContent('/user/<username>/mytest/testdata/file1.txt') FROM mydb.mytable; -- hdfs file
+SELECT ReadHDFSFileContent('/user/<username>/mytest/testdata') FROM mydb.mytable; --directory
