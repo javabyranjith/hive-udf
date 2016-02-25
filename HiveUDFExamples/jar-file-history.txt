@@ -1,7 +1,16 @@
+HiveUDFExamples-0.3.jar
+======================
+Implemented below examples for GenericUDF:
+1. MapObjectInspectorGenericUDF.java
+2. StructObjectInspectorGenericUDF.java
+3. EmpExperienceInfoStructOI.java
+4. TextArrayGUDF.java
+
 HiveUDFExamples-0.2.jar
 ======================
 Implemented below examples:
 1. ReadAwsS3FileContent.java
+2. ReadHDFSFileContent.java
 
 HiveUDFExamples-0.1.jar
 ======================
