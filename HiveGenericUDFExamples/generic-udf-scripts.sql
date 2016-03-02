@@ -24,3 +24,7 @@ SELECT TextArrayGUDF('ranjith') FROM ranjith.empinfo;
 ADD JAR /prod/hadoop/user/<ranjith>/ranjith/hiveudf/lib/HiveGenericUDFExamples-0.1.jar;
 CREATE TEMPORARY FUNCTION EmpExperienceInfoStructOI AS 'jbr.hivegenericudf.structOI.EmpExperienceInfoStructOI';
 SELECT EmpExperienceInfoStructOI(empid, doj) FROM ranjith.empinfo;
+
+ADD JAR /prod/hadoop/user/<ranjith>/ranjith/hiveudf/lib/HiveGenericUDFExamples-0.1.jar;
+CREATE TEMPORARY FUNCTION EmpInfoStructOI AS 'jbr.hivegenericudf.structOI.EmpInfoStructOI';
+SELECT EmpInfoStructOI(empid,firstname,lastname) FROM ranjith.empinfo;
