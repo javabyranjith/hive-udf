@@ -28,3 +28,8 @@ SELECT EmpExperienceInfoStructOI(empid, doj) FROM ranjith.empinfo;
 ADD JAR /prod/hadoop/user/<ranjith>/ranjith/hiveudf/lib/HiveGenericUDFExamples-0.1.jar;
 CREATE TEMPORARY FUNCTION EmpInfoStructOI AS 'jbr.hivegenericudf.structOI.EmpInfoStructOI';
 SELECT EmpInfoStructOI(empid,firstname,lastname) FROM ranjith.empinfo;
+
+ADD JAR /prod/hadoop/user/<ranjith>/ranjith/hiveudf/lib/HiveGenericUDFExamples-0.1.jar;
+ADD FILE /prod/hadoop/user/<ranjith>/ranjith/hiveudf/testdata/emp/emp-config.txt;
+CREATE TEMPORARY FUNCTION ReadFileAtInitializeStructOI AS 'jbr.hivegenericudf.structOI.ReadFileAtInitializeStructOI';
+SELECT ReadFileAtInitializeStructOI(empid,firstname,lastname) FROM ranjith.empinfo;

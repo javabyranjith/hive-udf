@@ -47,7 +47,7 @@ public class EmpInfoStructOI extends GenericUDF {
 
   @Override
   public String getDisplayString(String[] arg0) {
-    return "StructObjectInspectorGenericUDF";
+    return "EmpInfoStructOI";
   }
 
   @Override
