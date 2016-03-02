@@ -1,0 +1,3 @@
+Employee ID|int
+First Name|string
+Last Name|string
