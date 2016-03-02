@@ -1,0 +1,6 @@
+HiveGenericUDFExamples-0.1.jar
+======================
+1. MapObjectInspectorGenericUDF.java
+2. StructObjectInspectorGenericUDF.java
+3. EmpExperienceInfoStructOI.java
+4. TextArrayGUDF.java
