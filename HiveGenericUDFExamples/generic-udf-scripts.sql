@@ -1,7 +1,7 @@
 --=====MapObjectInspector GenericUDF Examples=================================================================
 ADD JAR /prod/hadoop/user/<ranjith>/ranjith/hiveudf/lib/HiveGenericUDFExamples-0.1.jar;
-CREATE TEMPORARY FUNCTION MapObjectInspectorGenericUDF AS 'jbr.hivegenericudf.mapOI.MapObjectInspectorGenericUDF';
-SELECT MapObjectInspectorGenericUDF(empid, firstname, lastname) FROM ranjith.empinfo;
+CREATE TEMPORARY FUNCTION EmpInfoMapOI AS 'jbr.hivegenericudf.mapOI.EmpInfoMapOI';
+SELECT EmpInfoMapOI(empid, firstname, lastname) FROM ranjith.empinfo;
 
 ADD JAR /prod/hadoop/user/<ranjith>/ranjith/hiveudf/lib/HiveGenericUDFExamples-0.1.jar;
 ADD FILE /prod/hadoop/user/<ranjith>/ranjith/hiveudf/testdata/genericudf/sample-data.txt;
