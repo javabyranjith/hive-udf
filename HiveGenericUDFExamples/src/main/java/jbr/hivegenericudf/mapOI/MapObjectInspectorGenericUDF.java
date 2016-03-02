@@ -17,7 +17,7 @@ import org.apache.hadoop.hive.serde2.objectinspector.primitive.PrimitiveObjectIn
 import org.apache.hadoop.hive.serde2.objectinspector.primitive.StringObjectInspector;
 
 /**
- * An Example UDF for MapObjectInspector with GenericUDF.
+ * An Example Generic UDF for MapObjectInspector.
  */
 public class MapObjectInspectorGenericUDF extends GenericUDF {
   private Log _log = LogFactory.getLog(MapObjectInspectorGenericUDF.class.getName());
