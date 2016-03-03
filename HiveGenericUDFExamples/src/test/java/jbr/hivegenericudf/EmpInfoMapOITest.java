@@ -9,17 +9,17 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import jbr.hivegenericudf.mapOI.EmpInfoMapOI;
+import jbr.hivegenericudf.mapOI.EmpInfoMapObjInspector;
 
 public class EmpInfoMapOITest {
 
-  private EmpInfoMapOI _mapOIGUDF;
+  private EmpInfoMapObjInspector _mapOIGUDF;
   private ObjectInspector _empId, _firstName, _lastName;
   private MapObjectInspector _result;
 
   @Before
   public void setUp() throws Exception {
-    _mapOIGUDF = new EmpInfoMapOI();
+    _mapOIGUDF = new EmpInfoMapObjInspector();
     _empId = PrimitiveObjectInspectorFactory.javaStringObjectInspector;
     _firstName = PrimitiveObjectInspectorFactory.javaStringObjectInspector;
     _lastName = PrimitiveObjectInspectorFactory.javaStringObjectInspector;
