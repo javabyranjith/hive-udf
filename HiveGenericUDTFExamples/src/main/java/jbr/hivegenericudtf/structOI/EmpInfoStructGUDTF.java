@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.hive.ql.exec.UDFArgumentException;
 import org.apache.hadoop.hive.ql.metadata.HiveException;
 import org.apache.hadoop.hive.ql.udf.generic.GenericUDTF;
+import org.apache.hadoop.hive.serde2.io.DateWritable;
 import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector;
 import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspectorFactory;
 import org.apache.hadoop.hive.serde2.objectinspector.PrimitiveObjectInspector;
@@ -36,7 +37,7 @@ public class EmpInfoStructGUDTF extends GenericUDTF {
     List<ObjectInspector> types = new ArrayList<ObjectInspector>();
 
     names.add("EMP_ID");
-    //types.add(PrimitiveObjectInspectorFactory.javaIntObjectInspector);
+    // types.add(PrimitiveObjectInspectorFactory.javaIntObjectInspector);
     types.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
 
     names.add("FIRST_NAME");
@@ -46,8 +47,8 @@ public class EmpInfoStructGUDTF extends GenericUDTF {
     types.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
 
     names.add("DATE_OF_BIRTH");
-    //types.add(PrimitiveObjectInspectorFactory.javaDateObjectInspector);
-    types.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
+    types.add(PrimitiveObjectInspectorFactory.writableDateObjectInspector);
+    //types.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
 
     names.add("POSITION");
     types.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
@@ -55,27 +56,34 @@ public class EmpInfoStructGUDTF extends GenericUDTF {
     return ObjectInspectorFactory.getStandardStructObjectInspector(names, types);
   }
 
-  @Override
-  public void process(Object[] args) throws HiveException {
+  public List<Object[]> processData(Object[] args) throws HiveException {
     List<Object[]> result = new ArrayList<Object[]>();
-
-    //int empid = Integer.valueOf(_empid.getPrimitiveJavaObject(args[0]).toString());
+    // int empid =
+    // Integer.valueOf(_empid.getPrimitiveJavaObject(args[0]).toString());
     String empid = _empid.getPrimitiveJavaObject(args[0]).toString();
     String firstname = _firstname.getPrimitiveJavaObject(args[1]).toString();
     String lastname = _lastname.getPrimitiveJavaObject(args[2]).toString();
-    String dob = _dob.getPrimitiveJavaObject(args[3]).toString();
+    String dob1 = _dob.getPrimitiveJavaObject(args[3]).toString();
+    
+    
 
-    /*SimpleDateFormat format = new SimpleDateFormat("DD-MM-YYYY");
-    Date dob = null;
-    try {
-      dob = format.parse(_dob.getPrimitiveJavaObject(args[3]).toString());
-    } catch (ParseException e) {
-      e.printStackTrace();
-    }
-*/
+    /*
+     * SimpleDateFormat format = new SimpleDateFormat("DD-MM-YYYY"); Date dob =
+     * null; try { dob =
+     * format.parse(_dob.getPrimitiveJavaObject(args[3]).toString()); } catch
+     * (ParseException e) { e.printStackTrace(); }
+     */
     String desig = _designation.getPrimitiveJavaObject(args[4]).toString();
 
-    result.add(new Object[] { empid + "1", firstname + "2", lastname + "3", dob + "4", desig + "5" });
+    result.add(new Object[] { "empid: " + empid, "firstname: " + firstname, "lastname: " + lastname,
+        "date of birth: " + new DateWritable(java.sql.Date.valueOf(dob1)), "position: " + desig });
+
+    return result;
+  }
+
+  @Override
+  public void process(Object[] args) throws HiveException {
+    List<Object[]> result = processData(args);
 
     Iterator<Object[]> itr = result.iterator();
     while (itr.hasNext()) {
