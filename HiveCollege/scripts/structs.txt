@@ -1,0 +1,40 @@
+student : ARRAY <
+  STRUCT<
+   id : STRING,
+   firstname : STRING,
+   lastname : STRING,
+   dob : DATE,
+   phone : INT,
+   email : STRING,
+   course : STRING,
+   dept : STRING,
+   address : STRUCT<
+    doorno : INT,
+    street : STRING,
+    city : STRING,
+    state : STRING,
+    country : STRING,
+    pincode : INT
+   >,
+   education : STRUCT<
+    college : STRING,
+    course : STRING,
+    percentage : DOUBLE,
+    yearofpass : INT
+   >    
+  >
+>
+
+staff : ARRAY <
+  STRUCT<
+    id : STRING,
+    firstname : STRING,
+    lastname : STRING,
+    dob : DATE,
+    phone : INT,
+    email : STRING,
+    dept : STRING,
+    dateofjoin : DATE
+    qualification : STRING
+  >
+>
