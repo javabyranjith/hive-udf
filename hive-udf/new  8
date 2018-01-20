@@ -1,0 +1,4 @@
+ADD JAR /prod/hadoop/user/themescape/ranjith/emp/HiveUDFExamples-0.2.jar;
+ADD JAR /prod/hadoop/user/themescape/ranjith/emp/brickhouse-0.6.0.jar;
+CREATE TEMPORARY FUNCTION emp_exp_map AS 'jbr.hiveudf.EmpExperienceUDFMap';
+CREATE TEMPORARY FUNCTION to_json AS 'brickhouse.udf.json.ToJsonUDF';

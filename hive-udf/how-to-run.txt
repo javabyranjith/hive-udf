@@ -1,0 +1,25 @@
+===BASIC SETTINGS=====
+1. Login to hadoop server
+
+2. create a folder in HDFS (ranjith/hive-examples)
+	> hadoop fs -mkdir ranjith
+	> hadoop fs -mkdir ranjith/emp
+
+3. copy test file to HDFS location: ranjith/emp
+	* say you have emp.txt file in server path: /data/ranjith
+	> hadoop fs -copyFromLocal /data/ranjith/emp.txt ranjith/emp
+
+4. Login to hive, create database and table.
+	> hive
+hive> create database ranjith;
+hive> CREATE DATABASE IF NOT EXISTS ranjith;
+	USE ranjith;
+	DROP TABLE IF EXISTS empinfo;
+	CREATE EXTERNAL TABLE empinfo(empid STRING, firstname STRING, lastname STRING, dob STRING, designation STRING, doj STRING)
+	ROW FORMAT DELIMITED
+	FIELDS TERMINATED BY '\t'
+	LINES TERMINATED BY '\n'
+	STORED AS TEXTFILE
+	LOCATION "/ranjith/emp.txt";
+	
+5.  
