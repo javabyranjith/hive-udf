@@ -33,3 +33,9 @@ ADD JAR /prod/hadoop/user/<ranjith>/ranjith/hiveudf/lib/HiveGenericUDFExamples-0
 ADD FILE /prod/hadoop/user/<ranjith>/ranjith/hiveudf/testdata/emp/emp-config.txt;
 CREATE TEMPORARY FUNCTION ReadFileAtInitializeStructOI AS 'jbr.hivegenericudf.structOI.ReadFileAtInitializeStructOI';
 SELECT ReadFileAtInitializeStructOI(empid,firstname,lastname) FROM ranjith.empinfo;
+
+
+--===============================
+ADD JAR /prod/hadoop/user/<ranjith>/ranjith/hiveudf/lib/HiveGenericUDFExamples-0.1.jar;
+CREATE TEMPORARY FUNCTION parseUrl AS 'jbr.hivegenericudf.so.ParseUrlUDF';
+SELECT parseUrl('','') FROM ranjith.empinfo;
